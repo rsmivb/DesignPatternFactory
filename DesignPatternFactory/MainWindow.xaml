@@ -9,7 +9,7 @@
     <Grid>
         <Label Content="Pattern" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="cbPatternNames" HorizontalAlignment="Left" Margin="63,30,0,0" VerticalAlignment="Top" Width="120" />
-        <Button x:Name="btnGenerate" Content="Generate Pattern" HorizontalAlignment="Left" Margin="218,32,0,0" VerticalAlignment="Top" Width="103" Click="btnGenerate_Click"/>
+        <Button x:Name="btnGenerate" Content="Generate Pattern" HorizontalAlignment="Left" Margin="218,32,0,0" VerticalAlignment="Top" Width="103" Click="BtnGenerate_Click"/>
 
     </Grid>
 </Window>

@@ -30,6 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.15.0, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -42,7 +44,48 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration.cs" />
+    <Compile Include="Factory\PatternFactory.cs" />
+    <Compile Include="Models\InterpreterPatternModel.cs" />
+    <Compile Include="Models\AdapterPatternModel.cs" />
+    <Compile Include="Models\BridgePatternModel.cs" />
+    <Compile Include="Models\BuilderPatternModel.cs" />
+    <Compile Include="Models\ChainOfResponsabilityPatternModel.cs" />
+    <Compile Include="Models\CommandPatternModel.cs" />
+    <Compile Include="Models\CompositePatternModel.cs" />
+    <Compile Include="Models\DecoratorPatternModel.cs" />
+    <Compile Include="Models\EventAggregatorPatternModel.cs" />
+    <Compile Include="Models\FactoryPatternModel.cs" />
+    <Compile Include="Factory\IPattern.cs" />
+    <Compile Include="Factory\IPatternFactory.cs" />
+    <Compile Include="Models\FlyweightPatternModel.cs" />
+    <Compile Include="Models\LazyLoadPatternModel.cs" />
+    <Compile Include="Models\MediatorPatternModel.cs" />
+    <Compile Include="Models\MementoPatternModel.cs" />
+    <Compile Include="Models\NullObjectPatternModel.cs" />
+    <Compile Include="Models\ObserverPatternModel.cs" />
+    <Compile Include="Models\PrototypePatternModel.cs" />
+    <Compile Include="Models\ProxyPatternModel.cs" />
+    <Compile Include="Models\RepositoryPatternModel.cs" />
+    <Compile Include="Models\ServiceLocatorPatternModel.cs" />
+    <Compile Include="Models\SingletonPatternModel.cs" />
+    <Compile Include="Models\StatePatternModel.cs" />
+    <Compile Include="Models\StrategyPatternModel.cs" />
+    <Compile Include="Models\TemplateMethodPatternModel.cs" />
+    <Compile Include="PatternTemplates\FactoryPatternTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FactoryPatternTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PatternTemplates\FactoryPatternTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FactoryPatternTemplate.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

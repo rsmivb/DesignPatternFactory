@@ -1,7 +1,9 @@
 ﻿using BusinessLayer;
+using BusinessLayer.Factory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -31,15 +33,25 @@ namespace DesignPatternFactory
 
         public void Initialize()
         {
-            cbPatternNames.ItemsSource = configuration.PatternNames;
+            // initialize combox with patterns
+            cbPatternNames.ItemsSource = configuration.PatternNames.OrderBy(c => c);
         }
 
-        private void btnGenerate_Click(object sender, RoutedEventArgs e)
+        private void BtnGenerate_Click(object sender, RoutedEventArgs e)
         {
-            string pattern = cbPatternNames.SelectedValue.ToString();
-            // Create object using builder pattern to send it to Command
-            // Create a Command to generate Pattern selected - using Command Pattern
-            // After create the pattern, ask to user where want to save the files
+            configuration.PatternName = cbPatternNames.SelectedValue.ToString();
+
+            IPatternFactory factory = new PatternFactory(); //LoadFactory(configuration.FullName);
+            IPattern patternCreated = factory.CreatePattern(configuration.FullName);
+            if (patternCreated != null)
+            {
+                patternCreated.GeneratePattern();
+                MessageBox.Show(this, "Pattern files were sucessfully generated!!", "Success Message", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show(this, "The pattern selected was not found!", "Error Message", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
