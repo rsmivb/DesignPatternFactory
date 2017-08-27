@@ -1,11 +1,13 @@
 ﻿using BusinessLayer.PatternTemplates;
 using System;
 using BusinessLayer.Factory;
+using BusinessLayer.Utils;
 
 namespace BusinessLayer.Models
 {
     internal class FactoryPatternModel : IPattern
     {
+        public const string PatternName = "FactoryPattern.cs";
         public FactoryPatternModel()
         {
         }
@@ -14,7 +16,7 @@ namespace BusinessLayer.Models
         {
             FactoryPatternTemplate p = new FactoryPatternTemplate();
             // Generate text transformed
-            Console.WriteLine(p.TransformText());
+            FileHandler.CreateFile(PatternName, p.TransformText());
         }
     }
 }

@@ -13,7 +13,6 @@ namespace BusinessLayer.PatternTemplates
     using System.IO;
     using System.Diagnostics;
     using System.Linq;
-    using System.Xml.Linq;
     using System.Collections;
     using System.Collections.Generic;
     
@@ -21,7 +20,7 @@ namespace BusinessLayer.PatternTemplates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\rafael_mesquita\documents\visual studio 2017\Projects\DesignPatternFactory\BusinessLayer\PatternTemplates\FactoryPatternTemplate.tt"
+    #line 1 "C:\Users\rafael_mesquita\Source\Repos\DesignPatternFactory\BusinessLayer\PatternTemplates\FactoryPatternTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class FactoryPatternTemplate : FactoryPatternTemplateBase
     {
@@ -31,51 +30,58 @@ namespace BusinessLayer.PatternTemplates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write(" \r\n");
-            
-            #line 14 "C:\Users\rafael_mesquita\documents\visual studio 2017\Projects\DesignPatternFactory\BusinessLayer\PatternTemplates\FactoryPatternTemplate.tt"
-   
-   //template code - you get IntelliSense here
-   string Greeting = "Hello";
-   string SampleInputFileContent 
-    =  @"<Model>
-	    <Table name=""Rain""><Column name=""Night""/><Column name=""Day""/></Table>
-	    <Table name=""Temperatur""><Column name=""Night""/><Column name=""Day""/></Table>
-	    </Model>";	 
-    // Certainly you would normally load the model data from a file using 
-	// the relative path of the template as shown below:
-	// string SampleInputFileContent = System.IO.File.ReadAllText( 
-    // System.IO.Path.GetDirectoryName(this.Host.TemplateFile) + "\\datafile.xml");  	
+            this.Write(@"// This is the output code from FactoryTemplate. Created by DesignPatternFactory tool developed by Rafael S. Mesquita -  mesquita.cob@gmail.com
+// you only get syntax-highlighting here - not intellisense
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Text;
+using System.Reflection;
+namespace Factory.Pattern
+{
+	public class Client
+	{
+		public void Main ()
+		{
+			IFactory factory = new Factory();
+			// using Reflections to generate object based on object name
+			IObject obj = factory.CreateObject(string objectType);
+			obj.GenerateObject();
+		}
+	 }
+	public interface IFactory
+	{
+		IObject CreateObject(string objectType);
+	}
+	public interface IObject
+	{
+		void GenerateObject();
+	}
+	public class Factory : IFactory
+	{
+		public string MyProperty{ get; set; }
+		public Factory()
+		{
+		}
+		public IObject CreateObject(string objectType)
+		{
+			return Assembly.GetExecutingAssembly().CreateInstance(objectType, true) as IObject;
+		}
+	}
+	public class Object : IObject
+	{
+		public string MyProperty{ get; set; }
 
-            
-            #line default
-            #line hidden
-            this.Write("// This is the output code from your template\r\n// you only get syntax-highlightin" +
-                    "g here - not intellisense\r\nnamespace MyNameSpace{\r\n  class MyFirstGeneratedClass" +
-                    "{\r\n     public static void main (string[] args ){\r\n       System.Console.WriteLi" +
-                    "ne(\"");
-            
-            #line 32 "C:\Users\rafael_mesquita\documents\visual studio 2017\Projects\DesignPatternFactory\BusinessLayer\PatternTemplates\FactoryPatternTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Greeting));
-            
-            #line default
-            #line hidden
-            this.Write(", the time is now: ");
-            
-            #line 32 "C:\Users\rafael_mesquita\documents\visual studio 2017\Projects\DesignPatternFactory\BusinessLayer\PatternTemplates\FactoryPatternTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(System.DateTime.Now.ToString()));
-            
-            #line default
-            #line hidden
-            this.Write("\");\r\n\t   ");
-            
-            #line 33 "C:\Users\rafael_mesquita\documents\visual studio 2017\Projects\DesignPatternFactory\BusinessLayer\PatternTemplates\FactoryPatternTemplate.tt"
- getWeatherDataCodeGen(SampleInputFileContent); 
-            
-            #line default
-            #line hidden
-            this.Write("     \r\n     }\r\n  static string GetDataForTable(string table){\r\n     // TODO - wil" +
-                    "l be implemented later...\r\n     return \"\";\r\n    }\r\n  }\r\n}\r\n \r\n");
+		public Object()
+		{
+		}
+
+		public void GenerateObject()
+		{
+			//TODO
+		}
+	}
+}");
             return this.GenerationEnvironment.ToString();
         }
         private global::Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost hostValue;
@@ -93,53 +99,6 @@ namespace BusinessLayer.PatternTemplates
                 this.hostValue = value;
             }
         }
-        
-        #line 42 "C:\Users\rafael_mesquita\documents\visual studio 2017\Projects\DesignPatternFactory\BusinessLayer\PatternTemplates\FactoryPatternTemplate.tt"
-  
-  // Insert any template procedures here
-  void getWeatherDataCodeGen(string Input) {
-	System.Xml.Linq.XDocument XmlDoc = System.Xml.Linq.XDocument.Parse(Input);
-	
-	
-	var Tables = from c in XmlDoc.Descendants("Table") 
-	   			 select new {Name = c.Attribute("name").Value, Table = c};
-
-    foreach (var aTable in Tables) {
-	
-        
-        #line default
-        #line hidden
-        
-        #line 52 "C:\Users\rafael_mesquita\documents\visual studio 2017\Projects\DesignPatternFactory\BusinessLayer\PatternTemplates\FactoryPatternTemplate.tt"
-this.Write("\t System.Console.Write(GetDataForTable(\"");
-
-        
-        #line default
-        #line hidden
-        
-        #line 53 "C:\Users\rafael_mesquita\documents\visual studio 2017\Projects\DesignPatternFactory\BusinessLayer\PatternTemplates\FactoryPatternTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(aTable.Name));
-
-        
-        #line default
-        #line hidden
-        
-        #line 53 "C:\Users\rafael_mesquita\documents\visual studio 2017\Projects\DesignPatternFactory\BusinessLayer\PatternTemplates\FactoryPatternTemplate.tt"
-this.Write("\"));\r\n\t");
-
-        
-        #line default
-        #line hidden
-        
-        #line 54 "C:\Users\rafael_mesquita\documents\visual studio 2017\Projects\DesignPatternFactory\BusinessLayer\PatternTemplates\FactoryPatternTemplate.tt"
-
-	}
-	
-  }
-
-        
-        #line default
-        #line hidden
     }
     
     #line default
