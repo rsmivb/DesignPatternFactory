@@ -1,0 +1,98 @@
+﻿<#@ template debug="true" hostSpecific="true" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+
+
+// This is the output code from BuilderTemplate. Created by DesignPatternFactory tool developed by Rafael S. Mesquita 2017 -  mesquita.cob@gmail.com
+// you only get syntax-highlighting here - not intellisense
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Text;
+using System.Reflection;
+namespace Builder.Pattern
+{
+	public class Client
+	{
+		public void Main ()
+		{
+			var objectMaker = new ObjectMaker(new MyObjectBuilder());
+            objectMaker.BuildObject();
+            var object = objectMaker.GetObject();
+            object.Display();
+		}
+	 }
+
+	 public abstract class ObjectBuilder
+    {
+        protected Object obj;
+        public Object GetObject()
+        {
+            return obj;
+        }
+        public void CreateNewObject()
+        {
+            obj = new Object();
+        }
+        public abstract void BuildPartOfObject1();
+        public abstract void BuildPartOfObject2();
+        public abstract void BuildPartOfObject3();
+        public abstract void BuildPartOfObject4();
+    }
+
+	public class MyObjectBuilder : ObjectBuilder
+    {
+	// for creation another builder, just extend objectbuilder abstract class
+        public override void BuildPartOfObject1()
+        {
+            // TODO creation part of object
+        }
+
+        public override void BuildPartOfObject2()
+        {
+            // TODO creation part of object
+        }
+
+        public override void BuildPartOfObject3()
+        {
+            // TODO creation part of object
+        }
+
+        public override void BuildPartOfObject4()
+        {
+            // TODO creation part of object
+        }
+    }
+
+	public class ObjectMaker
+    {
+        private readonly ObjectBuilder builder;
+        public ObjectMaker(ObjectBuilder builder)
+        {
+            this.builder = builder;
+        }
+
+        public void BuildObject()
+        {
+            builder.CreateNewObject();
+            builder.BuildPartOfObject1();
+            builder.BuildPartOfObject2();
+            builder.BuildPartOfObject3();
+            builder.BuildPartOfObject4();
+        }
+
+        public Object GetObject()
+        {
+            return builder.GetObject();
+        }
+    }
+
+}

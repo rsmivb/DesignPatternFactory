@@ -23,10 +23,10 @@ namespace DesignPatternFactory
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly Configuration configuration;
+        private readonly DesignPatternCreator pattern;
         public MainWindow()
         {
-            configuration = new Configuration();
+            pattern = new DesignPatternCreator();
             InitializeComponent();
             Initialize();
         }
@@ -34,18 +34,16 @@ namespace DesignPatternFactory
         public void Initialize()
         {
             // initialize combox with patterns
-            cbPatternNames.ItemsSource = configuration.PatternNames.OrderBy(c => c);
+            cbPatternNames.ItemsSource = pattern.GetPatterns();
+                //configuration.PatternNames.OrderBy(c => c);
         }
 
         private void BtnGenerate_Click(object sender, RoutedEventArgs e)
         {
-            configuration.PatternName = cbPatternNames.SelectedValue.ToString();
-
-            IPatternFactory factory = new PatternFactory(); //LoadFactory(configuration.FullName);
-            IPattern patternCreated = factory.CreatePattern(configuration.FullName);
-            if (patternCreated != null)
+            pattern.PatternName = cbPatternNames.SelectedValue.ToString();
+            if(pattern.PatternName != null)
             {
-                patternCreated.GeneratePattern();
+                pattern.Execute();
                 MessageBox.Show(this, "Pattern files were sucessfully generated!!", "Success Message", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else

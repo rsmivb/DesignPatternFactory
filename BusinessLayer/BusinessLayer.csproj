@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Configuration.cs" />
     <Compile Include="Factory\PatternFactory.cs" />
+    <Compile Include="DesignPatternCreator.cs" />
     <Compile Include="Models\InterpreterPatternModel.cs" />
     <Compile Include="Models\AdapterPatternModel.cs" />
     <Compile Include="Models\BridgePatternModel.cs" />
@@ -60,7 +61,6 @@
     <Compile Include="Models\FlyweightPatternModel.cs" />
     <Compile Include="Models\LazyLoadPatternModel.cs" />
     <Compile Include="Models\MediatorPatternModel.cs" />
-    <Compile Include="Models\MementoPatternModel.cs" />
     <Compile Include="Models\NullObjectPatternModel.cs" />
     <Compile Include="Models\ObserverPatternModel.cs" />
     <Compile Include="Models\PrototypePatternModel.cs" />
@@ -70,24 +70,42 @@
     <Compile Include="Models\SingletonPatternModel.cs" />
     <Compile Include="Models\StatePatternModel.cs" />
     <Compile Include="Models\StrategyPatternModel.cs" />
-    <Compile Include="Models\TemplateMethodPatternModel.cs" />
+    <Compile Include="PatternTemplates\BuilderPatternTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BuilderPatternTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="PatternTemplates\FactoryPatternTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FactoryPatternTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utils\FileHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="PatternTemplates\BuilderPatternTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>BuilderPatternTemplate.cs</LastGenOutput>
+    </Content>
     <Content Include="PatternTemplates\FactoryPatternTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>FactoryPatternTemplate.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

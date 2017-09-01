@@ -13,11 +13,19 @@ namespace BusinessLayer.Models
         {
 
         }
+
+        public string PatternFileName { get; private set; }
+
         public void GeneratePattern()
         {
             //DecoratorPatternTemplate p = new DecoratorPatternTemplate();
             // Generate text transformed
             //Console.WriteLine(p.TransformText());
+        }
+
+        public void SetPatternNameFile(string fileName)
+        {
+            PatternFileName = fileName;
         }
     }
 }

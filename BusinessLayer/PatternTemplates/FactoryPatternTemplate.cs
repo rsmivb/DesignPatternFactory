@@ -30,7 +30,7 @@ namespace BusinessLayer.PatternTemplates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write(@"// This is the output code from FactoryTemplate. Created by DesignPatternFactory tool developed by Rafael S. Mesquita -  mesquita.cob@gmail.com
+            this.Write(@"// This is the output code from FactoryTemplate. Created by DesignPatternFactory tool developed by Rafael S. Mesquita 2017 -  mesquita.cob@gmail.com
 // you only get syntax-highlighting here - not intellisense
 using System;
 using System.Linq;

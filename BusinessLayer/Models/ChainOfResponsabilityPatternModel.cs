@@ -13,11 +13,19 @@ namespace BusinessLayer.Models
         {
 
         }
+
+        public string PatternFileName { get; private set; }
+
         public void GeneratePattern()
         {
             //ChainOfResponsabilityPatternTemplate p = new ChainOfResponsabilityPatternTemplate();
             // Generate text transformed
             //Console.WriteLine(p.TransformText());
+        }
+
+        public void SetPatternNameFile(string fileName)
+        {
+            PatternFileName = fileName;
         }
     }
 }

@@ -10,11 +10,10 @@ namespace BusinessLayer
 {
     public class Configuration
     {
-        public string[] PatternNames { get { return ConfigurationManager.AppSettings["PatternNames"].Split(Separator); } }
-        public char Separator { get => ConfigurationManager.AppSettings["Separator"].ToCharArray().First(); }
-        public string AssemblyName { get => ConfigurationManager.AppSettings["Assembly"]; }
-        public string Name { get => ConfigurationManager.AppSettings["Name"]; }
-        public string PatternName { get; set; }
-        public string FullName { get { return $"{AssemblyName}{PatternName}{Name}"; } }
+        public string[] PatternNames { get { return BusinessLayer.Properties.Resources.PatternNames.Split(Separator); } }
+        private char Separator { get => BusinessLayer.Properties.Resources.Separator.ToCharArray().First(); }
+        private string AssemblyName { get => BusinessLayer.Properties.Resources.Assembly; }
+        private string Name { get => BusinessLayer.Properties.Resources.Name; }
+
     }
 }

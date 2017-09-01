@@ -7,16 +7,22 @@ namespace BusinessLayer.Models
 {
     internal class FactoryPatternModel : IPattern
     {
-        public const string PatternName = "FactoryPattern.cs";
         public FactoryPatternModel()
         {
         }
+
+        public string PatternFileName { get; private set; }
 
         public void GeneratePattern()
         {
             FactoryPatternTemplate p = new FactoryPatternTemplate();
             // Generate text transformed
-            FileHandler.CreateFile(PatternName, p.TransformText());
+            FileHandler.CreateFile(PatternFileName, p.TransformText());
+        }
+
+        public void SetPatternNameFile(string fileName)
+        {
+            PatternFileName = fileName;
         }
     }
 }

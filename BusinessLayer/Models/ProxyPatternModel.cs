@@ -13,11 +13,19 @@ namespace BusinessLayer.Models
         {
 
         }
+
+        public string PatternFileName { get; private set; }
+
         public void GeneratePattern()
         {
             //ProxyPatternTemplate p = new ProxyPatternTemplate();
             // Generate text transformed
             //Console.WriteLine(p.TransformText());
+        }
+
+        public void SetPatternNameFile(string fileName)
+        {
+            PatternFileName = fileName;
         }
     }
 }

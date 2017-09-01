@@ -6,10 +6,10 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("BusinessLayer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Library responsible for creation pattern templates")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BusinessLayer")]
+[assembly: AssemblyCompany("rsmivb - Rafael Mesquita")]
+[assembly: AssemblyProduct("PatternCoreLibrary")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

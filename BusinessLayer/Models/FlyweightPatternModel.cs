@@ -13,11 +13,18 @@ namespace BusinessLayer.Models
         {
 
         }
+        public string PatternFileName { get; private set; }
+
         public void GeneratePattern()
         {
             //FlyweightPatternTemplate p = new FlyweightPatternTemplate();
             // Generate text transformed
             //Console.WriteLine(p.TransformText());
+        }
+
+        public void SetPatternNameFile(string fileName)
+        {
+            PatternFileName = fileName;
         }
     }
 }

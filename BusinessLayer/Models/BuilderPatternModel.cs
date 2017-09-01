@@ -1,4 +1,6 @@
 ﻿using BusinessLayer.Factory;
+using BusinessLayer.PatternTemplates;
+using BusinessLayer.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Models
 {
-    public class BuilderPatternModel : IPattern
+    internal class BuilderPatternModel : IPattern
     {
+        public string PatternFileName { get; private set; }
         public BuilderPatternModel()
         {
 
@@ -16,9 +19,14 @@ namespace BusinessLayer.Models
 
         public void GeneratePattern()
         {
-            //BuilderPatternTemplate p = new BuilderPatternTemplate();
+            BuilderPatternTemplate p = new BuilderPatternTemplate();
             // Generate text transformed
-            //Console.WriteLine(p.TransformText());
+            FileHandler.CreateFile(PatternFileName, p.TransformText());
+        }
+
+        public void SetPatternNameFile(string fileName)
+        {
+            PatternFileName = fileName;
         }
     }
 }
